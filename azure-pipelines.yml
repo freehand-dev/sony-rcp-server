@@ -13,5 +13,24 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DownloadPackage@1
+  inputs:
+    packageType: 'nuget'
+    feed: '/3d77afcb-a6e8-4ae6-87cb-78ceee997060'
+    view: '72b44465-cc04-46c3-89b4-a4859ca0bf8a'
+    definition: 'fa6d9be1-0b64-4163-88d0-322b0d5fdf64'
+    version: 'latest'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: DownloadPackage@1
+  inputs:
+    packageType: 'nuget'
+    feed: '/3d77afcb-a6e8-4ae6-87cb-78ceee997060'
+    view: 
+    definition: 'fa6d9be1-0b64-4163-88d0-322b0d5fdf64'
+    version: 'latest'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
