@@ -10,6 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
+  appName: 'sony-rcp-server'
   buildConfiguration: 'Release'
 
 steps:
@@ -18,7 +19,7 @@ steps:
     packageType: 'nuget'
     feed: '/3d77afcb-a6e8-4ae6-87cb-78ceee997060'
     view: '72b44465-cc04-46c3-89b4-a4859ca0bf8a'
-    definition: 'fa6d9be1-0b64-4163-88d0-322b0d5fdf64'
+    definition: '6cf844b3-9456-4dd2-b15c-6cacfe4417ca'
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
 
@@ -26,7 +27,7 @@ steps:
   inputs:
     packageType: 'nuget'
     feed: '/3d77afcb-a6e8-4ae6-87cb-78ceee997060'
-    view: 
+    view: '72b44465-cc04-46c3-89b4-a4859ca0bf8a'
     definition: 'fa6d9be1-0b64-4163-88d0-322b0d5fdf64'
     version: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
