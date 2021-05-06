@@ -1,6 +1,11 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
+# Install Credential Provider and set env variables to enable Nuget restore with auth
+RUN wget -qO- https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh | bash
+ENV NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED true
+ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS "{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/jakob/_packaging/DockerBuilds/nuget/v3/index.json\", \"password\":\"l52j4zx5cvcmshnbf5a22jtewsldnamiyhj55u5dof5ivd7yqr5q\"}]}"
+
 # copy csproj and restore as distinct layer
 COPY . .
 RUN dotnet restore --runtime linux-arm --source "https://pkgs.dev.azure.com/oleksandr-nazaruk/_packaging/oleksandrnazaruk-feed/nuget/v3/index.json" --source "https://api.nuget.org/v3/index.json"
