@@ -3,7 +3,7 @@ WORKDIR /src
 
 # copy csproj and restore as distinct layer
 COPY . .
-RUN dotnet restore -r linux-arm --interactive
+RUN dotnet restore --runtime linux-arm --source "https://pkgs.dev.azure.com/oleksandr-nazaruk/_packaging/oleksandrnazaruk-feed/nuget/v3/index.json" --source "https://api.nuget.org/v3/index.json"
 
 # build app layer
 FROM build AS publish
