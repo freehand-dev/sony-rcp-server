@@ -3,7 +3,7 @@ WORKDIR /src
 
 # copy csproj and restore as distinct layer
 COPY . .
-RUN dotnet restore -r linux-arm
+RUN dotnet restore -r linux-arm --interactive
 
 # build app layer
 FROM build AS publish
