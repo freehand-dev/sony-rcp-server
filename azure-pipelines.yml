@@ -17,15 +17,15 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    
-- task: DotNetCoreCLI@2
-  inputs:
     command: 'restore'
     projects: '**/*.cspro'
     feedsToUse: 'select'
     vstsFeed: '3d77afcb-a6e8-4ae6-87cb-78ceee997060'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
