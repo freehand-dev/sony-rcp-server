@@ -5,10 +5,8 @@ WORKDIR /src
 # Personal access token to access Artifacts feed
 ARG ACCESS_TOKEN
 ARG ARTIFACTS_ENDPOINT
-ARG TEST
 RUN echo "Oh dang look at that $TEST"
 RUN echo "Oh dang look at that ${TEST}"
-RUN echo "Oh dang look at that $(TEST)"
 RUN wget -qO- https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh | bash
 ENV NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED true
 ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS "{\"endpointCredentials\": [{\"endpoint\":\"${ARTIFACTS_ENDPOINT}\", \"password\":\"${ACCESS_TOKEN}\"}]}"
