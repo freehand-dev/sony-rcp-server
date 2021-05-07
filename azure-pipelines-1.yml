@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        arguments: '--build-arg ARTIFACTS_ENDPOINT="$(ARTIFACTS_ENDPOINT)"" --build-arg ACCESS_TOKEN="$(ACCESS_TOKEN)" --build-arg TEST="HELLO"'
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile.debian-arm32'
         tags: |
           $(tag)
+        arguments: --build-arg ARTIFACTS_ENDPOINT=$(ARTIFACTS_ENDPOINT) --build-arg ACCESS_TOKEN=$(ACCESS_TOKEN)
