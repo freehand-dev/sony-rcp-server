@@ -22,7 +22,7 @@ RUN dotnet build -c Release -o /app/build
 
 # publish layer
 FROM build AS publish
-RUN dotnet publish  -c Release --self-contained false --no-restore --output /app/publish  "./sony-rcp-server/sony-vrcp-server.csproj"
+RUN dotnet publish  -c Release --self-contained false --no-restore --output /app/publish  "./sony-rcp-server/sony-rcp-server.csproj"
 
 # final stage/image
 FROM base AS final
