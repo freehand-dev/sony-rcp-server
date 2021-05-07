@@ -3,8 +3,12 @@ WORKDIR /src
 
 # Install Credential Provider and set env variables to enable Nuget restore with auth
 # Personal access token to access Artifacts feed
-RUN echo "Oh dang look at that $ARTIFACTS_ENDPOINT"
-RUN echo "Oh dang look at that ${ARTIFACTS_ENDPOINT}"
+ARG ACCESS_TOKEN
+ARG ARTIFACTS_ENDPOINT
+ARG TEST
+RUN echo "Oh dang look at that $TEST"
+RUN echo "Oh dang look at that ${TEST}"
+RUN echo "Oh dang look at that $(TEST)"
 RUN wget -qO- https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh | bash
 ENV NUGET_CREDENTIALPROVIDER_SESSIONTOKENCACHE_ENABLED true
 ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS "{\"endpointCredentials\": [{\"endpoint\":\"${ARTIFACTS_ENDPOINT}\", \"password\":\"${ACCESS_TOKEN}\"}]}"
