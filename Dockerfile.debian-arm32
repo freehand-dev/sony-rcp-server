@@ -3,8 +3,6 @@ WORKDIR /src
 
 # Install Credential Provider and set env variables to enable Nuget restore with auth
 # Personal access token to access Artifacts feed
-ARG ACCESS_TOKEN
-ARG ARTIFACTS_ENDPOINT
 RUN echo "Oh dang look at that $ARTIFACTS_ENDPOINT"
 RUN echo "Oh dang look at that ${ARTIFACTS_ENDPOINT}"
 RUN wget -qO- https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh | bash
