@@ -1,3 +1,8 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim-arm32v7 AS base
+WORKDIR /app
+EXPOSE 6660
+EXPOSE 6661
+
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
@@ -13,13 +18,14 @@ ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS "{\"endpointCredentials\": [{\"endpoint\":
 # copy csproj and restore as distinct layer
 COPY . .
 RUN dotnet restore --runtime linux-arm --source ${ARTIFACTS_ENDPOINT} --source "https://api.nuget.org/v3/index.json"
+RUN dotnet build -c Release -o /app/build
 
-# build app layer
+# publish layer
 FROM build AS publish
-RUN dotnet publish  -c release --self-contained false --no-restore --output /app/publish  "./sony-rcp-server/sony-vrcp-server.csproj"
+RUN dotnet publish  -c Release --self-contained false --no-restore --output /app/publish  "./sony-rcp-server/sony-vrcp-server.csproj"
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim-arm32v7
+FROM base AS final
 ENV TZ=Europe/Kiev
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p /opt/sony-rcp-server/bin
