@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 echo "[***] Build hook running"
 
 echo $IMAGE_NAME
