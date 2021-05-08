@@ -26,8 +26,8 @@ RUN dotnet publish  -c Release --self-contained false --no-restore --output /app
 
 # final stage/image
 FROM base AS final
-ENV TZ=Europe/Kiev
-RUN timedatectl set-timezone $TZ
+#ENV TZ=Europe/Kiev
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p /opt/sony-rcp-server/bin
 RUN mkdir -p /opt/sony-rcp-server/etc/sony-rcp-server
 WORKDIR /opt/sony-rcp-server/bin
