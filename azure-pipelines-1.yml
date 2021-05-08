@@ -28,3 +28,13 @@ stages:
         tags: |
           $(tag)
         arguments: --build-arg ARTIFACTS_ENDPOINT=$(ARTIFACTS_ENDPOINT) --build-arg ACCESS_TOKEN=$(ACCESS_TOKEN)
+    - task: Docker@2
+      displayName: Push image
+      inputs:
+        containerRegistry: |
+          $(dockerHub)
+        repository: $(imageName)
+        command: push
+        tags: |
+          $(tag)
+    
