@@ -1,11 +1,4 @@
+#!/bin/bash
+
 echo "[***] Build hook running"
 
-echo $IMAGE_NAME
-echo $DOCKERFILE_PATH
-echo $ARTIFACTS_ENDPOINT
-
-docker build \
-	--build-arg ACCESS_TOKEN=$ACCESS_TOKEN \
-	--build-arg ARTIFACTS_ENDPOINT=$ARTIFACTS_ENDPOINT \
-	-f $DOCKERFILE_PATH \
-	-t $IMAGE_NAME .
