@@ -72,7 +72,7 @@ The content of the file will be the following one
     [Kestrel:Endpoints]
     Http:Url=http://*:6660
     Https:Url=https://*:6661
-    Https:Certificate:Path=/opt/sony-vrcp-server/etc/sony-vrcp-server/cert.pfx
+    Https:Certificate:Path=/opt/sony-rcp-server/etc/sony-rcp-server/cert.pfx
     Https:Certificate:Password=certpassword
 
 ## Docker
@@ -80,4 +80,4 @@ The content of the file will be the following one
 	$ docker pull oleksandrnazaruk/sony-rcp-server:latest
 	
 	$ docker volume create sony-rcp-server_data
-	$ docker run --detach --name sony-rcp-server --restart=always -v sony-rcp-server_data:/opt/sony-rcp-server/etc/sony-rcp-serveroleksandrnazaruk/sony-rcp-server:latest
+	$ docker run --detach --name sony-rcp-server --restart=always -v sony-rcp-server_data:/opt/sony-rcp-server/etc/sony-rcp-server -p 6660:6660 -p 6661:6661  oleksandrnazaruk/sony-rcp-server:latest
