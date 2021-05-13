@@ -2,12 +2,6 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim-arm64v8 AS base
 EXPOSE 6660
 EXPOSE 6661
 
-ENV TZ=Europe/Kiev
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN mkdir -p /opt/sony-rcp-server/bin
-RUN mkdir -p /opt/sony-rcp-server/etc/sony-rcp-server
-WORKDIR /opt/sony-rcp-server/bin
-
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
@@ -31,5 +25,11 @@ RUN dotnet publish  -c Release --self-contained false --no-restore --output /app
 
 # final stage/image
 FROM base AS final
+ENV TZ=Europe/Kiev
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN mkdir -p /opt/sony-rcp-server/bin/
+RUN mkdir -p /opt/sony-rcp-server/bin/ui/
+RUN mkdir -p /opt/sony-rcp-server/etc/sony-rcp-server/
+WORKDIR /opt/sony-rcp-server/bin
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "sony-rcp-server.dll"]
