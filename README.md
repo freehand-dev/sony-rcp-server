@@ -81,3 +81,6 @@ The content of the file will be the following one
 	
 	$ docker volume create sony-rcp-server_data
 	$ docker run --detach --name sony-rcp-server --restart=always -v sony-rcp-server_data:/opt/sony-rcp-server/etc/sony-rcp-server -p 6660:6660 -p 6661:6661  oleksandrnazaruk/sony-rcp-server:latest
+
+	# Example run on Raspberry Pi 4 (Ubuntu 64bit)
+	$ docker run --detach --name sony-rcp-server --restart=always -v sony-rcp-server_data:/opt/sony-rcp-server/etc/sony-rcp-server -p 6660:6660 -p 6661:6661 --env MCU__IPAddress=192.168.1.200 --env RCP__RcpId=31  oleksandrnazaruk/sony-rcp-server:arm64v8
