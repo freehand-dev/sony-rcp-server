@@ -29,6 +29,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/test
+        [Produces("application/json")]
         [HttpGet("test")]
         public ActionResult<BasicResult<int>> Test()
         {
@@ -37,6 +38,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/connect
+        [Produces("application/json")]
         [HttpGet("connect")]
         public ActionResult Connect()
         {
@@ -45,6 +47,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/disconnect
+        [Produces("application/json")]
         [HttpGet("disconnect")]
         public ActionResult Disconnect()
         {
@@ -53,6 +56,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // PUT: /api/v1/rcp/ccu/assign/{ccuId}
+        [Produces("application/json")]
         [HttpPut("ccu/assign/{ccuId}")]
         public ActionResult<BasicResult<int>> Assign(int ccuId)
         {
@@ -74,6 +78,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // DELETE: /api/v1/rcp/ccu/assign
+        [Produces("application/json")]
         [HttpDelete("ccu/assign")]
         public ActionResult<int> Unassign()
         {
@@ -91,6 +96,7 @@ namespace sony_rcp_server.Controllers
 
         // GET: /api/v1/rcp/ccu/assign
         // GET: /api/v1/rcp/ccu/assigned
+        [Produces("application/json")]
         [HttpGet("ccu/assign")]
         [HttpGet("ccu/assigned")]
         public ActionResult<BasicResult<int>> Assigned()
@@ -101,6 +107,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/ccu
+        [Produces("application/json")]
         [HttpGet("ccu")]
         public ActionResult<IEnumerable<int>> GetOnlineCCUs()
         {
@@ -109,6 +116,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/ccu/ip/{ccuId}
+        [Produces("application/json")]
         [HttpGet("ccu/ip/{ccuId}")]
         public ActionResult<BasicResult<string>> GetCcuIpAddress(int ccuId)
         {
@@ -118,6 +126,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/permision
+        [Produces("application/json")]
         [HttpGet("permision")]
         public ActionResult<BasicResult<Message30.PermissionControl>> GetPermision()
         {
@@ -127,6 +136,7 @@ namespace sony_rcp_server.Controllers
         }
 
         // GET: /api/v1/rcp/operatio/camera/mic_gain
+        [Produces("application/json")]
         [HttpGet("operatio/camera/mic_gain")]
         public ActionResult<IEnumerable<MicGainSelect.MicGainValue>> GetCameraMicrophoneGain()
         {
