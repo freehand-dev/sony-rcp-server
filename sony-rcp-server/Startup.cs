@@ -56,7 +56,7 @@ namespace sony_rcp_server
 
             app.UseCors("CorsPolicy");
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
