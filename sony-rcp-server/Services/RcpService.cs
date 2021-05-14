@@ -33,6 +33,11 @@ namespace sony_rcp_server.Services
 
             var _loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 
+            //
+            _logger.LogDebug($"* RcpServerOptions.MCU.IPAddress={ this._settings.MCU.IPAddress }");
+            _logger.LogDebug($"* RcpServerOptions.RCP.RcpId={ this._settings.RCP.RcpId }");
+            _logger.LogDebug($"* RcpServerOptions.RCP.SerialNumber={ this._settings.RCP.SerialNumber }");
+
             _msuClient = new MsuClient(_loggerFactory)
             {
                 Host = IPAddress.Parse(_settings.MCU.IPAddress),
