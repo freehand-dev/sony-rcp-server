@@ -64,6 +64,10 @@ namespace sony_rcp_server
                      config.AddCommandLine(args);
                      config.AddEnvironmentVariables();
 
+                     //
+                     Console.WriteLine($"MCU:IPAddress={ builderContext.Configuration.GetValue<string>("MCU:IPAddress") }");
+                     Console.WriteLine($"RCP:RcpId={ builderContext.Configuration.GetValue<int>("RCP:RcpId") }");
+
                  })
                  .ConfigureLogging((builderContext, logging) =>
                  {
