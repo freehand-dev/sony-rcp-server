@@ -15,8 +15,12 @@
 
   <ItemGroup>
     <None Update="Data\sony-rcp-server.conf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\ui\" />
   </ItemGroup>
 
 

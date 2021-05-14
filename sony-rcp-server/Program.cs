@@ -42,8 +42,7 @@ namespace sony_rcp_server
                      {
                          workingDirectory = System.IO.Path.Combine($"/opt/", env.ApplicationName, "etc", env.ApplicationName);
                      }
-                     if (!System.IO.Directory.Exists(workingDirectory))
-                         System.IO.Directory.CreateDirectory(workingDirectory);
+                     System.IO.Directory.CreateDirectory(workingDirectory);
 
                      config.SetBasePath(workingDirectory);
 

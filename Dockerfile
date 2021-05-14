@@ -1,5 +1,4 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet AS base
-WORKDIR /app
 EXPOSE 6660
 EXPOSE 6661
 

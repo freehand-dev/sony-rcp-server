@@ -48,12 +48,9 @@ namespace sony_rcp_server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                                System.IO.Path.Combine(Configuration.GetValue<string>("WorkingDirectory"), "ui")),
-                RequestPath = "/ui"
-            });
+            // configure UI StaticFiles
+            app.ConfigureStaticFiles(
+                Configuration.GetValue<string>("WorkingDirectory"));
 
             app.UseRouting();
 
